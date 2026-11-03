@@ -114,6 +114,32 @@
   letter-spacing: -0.01em;
   color: var(--navy);
 }
+@utility hero-sunrise-backdrop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 520px;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      ellipse 760px 360px at 50% 0%,
+      rgba(245, 158, 11, 0.48) 0%,
+      rgba(251, 191, 36, 0.34) 28%,
+      rgba(254, 240, 138, 0.18) 55%,
+      transparent 84%
+    ),
+    radial-gradient(
+      ellipse 460px 220px at 50% 0%,
+      rgba(234, 160, 35, 0.6) 0%,
+      rgba(245, 158, 11, 0.32) 44%,
+      transparent 88%
+    );
+  filter: blur(14px);
+}
 @utility sunrise-subtle {
   background: radial-gradient(
     75% 45% at 50% 0%,

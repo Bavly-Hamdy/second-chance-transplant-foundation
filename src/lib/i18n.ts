@@ -17,10 +17,11 @@ export interface Translations {
     ariaToggle: string;
   };
   hero: {
-    badge: string;
+    badge?: string;
     title: string;
     foundationName: string;
     tagline: string;
+    slogan: string;
     leadParagraph: string;
     stayConnectedBtn: string;
     readStoryBtn: string;
@@ -124,6 +125,7 @@ export const content: Record<Language, Translations> = {
       title: "Our Mission Begins Soon",
       foundationName: "Second Chance Transplant Foundation",
       tagline: "Second Chance Transplant Foundation",
+      slogan: "A Second Chance A New Life",
       leadParagraph:
         "There are moments in life when the world quiets down, and you find yourself holding your breath in the spaces between uncertainty and hope. Whether you are waiting for the gift of an organ transplant or healing on the other side, please know: you are never alone.",
       stayConnectedBtn: "Stay Connected",
@@ -239,6 +241,7 @@ export const content: Record<Language, Translations> = {
       title: "رسالتنا تبدأ قريباً",
       foundationName: "مؤسسة الفرصة الثانية لزراعة الأعضاء",
       tagline: "مؤسسة الفرصة الثانية لزراعة الأعضاء",
+      slogan: "فرصة ثانية.. حياة جديدة",
       leadParagraph:
         "هناك لحظات في الحياة يهدأ فيها العالم من حولك، وتجد نفسك تحبس أنفاسك في المسافات الفاصلة بين الحيرة والرجاء. وسواء كنت تنتظر حالياً هبة زراعة أي عضو لإنقاذ حياتك، أو كنت قد اجتزت وادي الشفاء، اعلم يقيناً: أنت لست وحدك أبداً.",
       stayConnectedBtn: "تواصل معنا",

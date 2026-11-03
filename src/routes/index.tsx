@@ -20,10 +20,8 @@ import {
   Loader2,
   Clock,
   Sun,
-  Feather,
   Menu,
   X,
-  MessageSquare,
 } from "lucide-react";
 
 const LOGO_SRC = "/Logo.png";
@@ -31,11 +29,11 @@ const LOGO_SRC = "/Logo.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Second Chance Transplant Foundation — Our Mission Begins Soon" },
+      { title: "Second Chance Transplant Foundation — A Second Chance A New Life" },
       {
         name: "description",
         content:
-          "There are moments in life when the world quiets down. Standing beside organ transplant patients, living donors, and families through waiting, healing, and lifelong renewal.",
+          "There are moments in life when the world quiets down. Standing beside organ transplant patients, living donors, and families through waiting, healing, and lifelong renewal. A Second Chance A New Life.",
       },
       { name: "author", content: "Bavly Hamdy" },
       { name: "creator", content: "Bavly Hamdy" },
@@ -45,12 +43,12 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Second Chance Transplant Foundation — Our Mission Begins Soon",
+        content: "Second Chance Transplant Foundation — A Second Chance A New Life",
       },
       {
         property: "og:description",
         content:
-          "Supporting organ transplant patients, living donors, and families through every chapter of the transplant journey.",
+          "Supporting organ transplant patients, living donors, and families through every chapter of the transplant journey. A Second Chance A New Life.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://secondchancetransplant.org/" },
@@ -63,12 +61,12 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Second Chance Transplant Foundation — Our Mission Begins Soon",
+        content: "Second Chance Transplant Foundation — A Second Chance A New Life",
       },
       {
         name: "twitter:description",
         content:
-          "Supporting organ transplant patients, living donors, and families through every chapter of the transplant journey.",
+          "Supporting organ transplant patients, living donors, and families through every chapter of the transplant journey. A Second Chance A New Life.",
       },
       { name: "twitter:image", content: "https://secondchancetransplant.org/Logo.png" },
       { name: "twitter:image:alt", content: "Second Chance Transplant Foundation emblem" },
@@ -112,24 +110,13 @@ function Index() {
         isRtl ? "rtl text-right" : "ltr text-left"
       }`}
     >
-      {/* Ambient Sunrise Atmosphere Emanating from the Very Top of the Screen */}
-      <div
-        aria-hidden
-        className="top-sunrise-atmosphere pointer-events-none fixed inset-x-0 top-0 h-[480px] sm:h-[560px] md:h-[640px] -z-10"
-      />
-      <div
-        aria-hidden
-        className="top-sunrise-core pointer-events-none fixed inset-x-0 top-0 h-[280px] sm:h-[340px] -z-10"
-      />
-
-      {/* Top Editorial Masthead Notice */}
-      <MastheadNotice />
-
-      {/* Main Humanist Navigation */}
-      <Header />
-
       <main className="relative overflow-x-hidden">
+        {/* Hero Section with Radiant Top Sunrise and No Occlusions */}
         <Hero />
+
+        {/* Sticky Humanist Navigation when browsing the site */}
+        <Header />
+
         <ImpactBar />
         <FoundingChronicle />
         <FourChapters />
@@ -140,46 +127,30 @@ function Index() {
   );
 }
 
-function MastheadNotice() {
-  const { t } = useLanguage();
-
-  return (
-    <aside className="border-b border-stone-200/60 bg-[var(--card)]/90 backdrop-blur-xs px-3 py-2 text-center text-[10px] sm:text-[11px] font-medium tracking-wide text-stone-600">
-      <div className="mx-auto flex max-w-7xl items-center justify-center gap-1.5 sm:gap-3 flex-wrap">
-        <span className="inline-block rounded border border-amber-300/80 bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-900">
-          {t.masthead.badge}
-        </span>
-        <span className="hidden sm:inline">•</span>
-        <span className="text-stone-700 leading-tight">{t.masthead.notice}</span>
-      </div>
-    </aside>
-  );
-}
-
 function Header() {
   const { language, toggleLanguage, t, isRtl } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-stone-200/70 bg-[var(--background)]/85 backdrop-blur-md">
-      <div className="mx-auto flex h-18 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 w-full border-y border-stone-200/80 bg-[var(--background)]/90 backdrop-blur-md">
+      <div className="mx-auto flex h-16 sm:h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand with Official Crest */}
         <a
           href="#"
-          className="flex items-center gap-2.5 sm:gap-3.5 transition-opacity hover:opacity-90 max-w-[70%] sm:max-w-none"
+          className="flex items-center gap-2.5 sm:gap-3 transition-opacity hover:opacity-90 max-w-[70%] sm:max-w-none"
         >
           <img
             src={LOGO_SRC}
             alt="Second Chance Transplant Foundation emblem"
-            className="h-10 sm:h-12 w-auto object-contain shrink-0 drop-shadow-xs"
+            className="h-9 sm:h-10 w-auto object-contain shrink-0 drop-shadow-xs"
           />
           <div className="flex flex-col min-w-0">
-            <span className="font-serif text-sm sm:text-lg md:text-xl font-bold tracking-tight text-[var(--navy)] leading-tight truncate">
+            <span className="font-serif text-sm sm:text-base md:text-lg font-bold tracking-tight text-[var(--navy)] leading-tight truncate">
               {t.hero.foundationName}
             </span>
-            <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider text-[var(--leaf)] uppercase mt-0.5 truncate">
-              {t.hero.title}
+            <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider text-[var(--leaf)] uppercase truncate">
+              {t.hero.slogan}
             </span>
           </div>
         </a>
@@ -207,7 +178,7 @@ function Header() {
             </a>
           </nav>
 
-          {/* Language Switcher Button (Always Visible & Tap-Friendly) */}
+          {/* Language Switcher Button */}
           <button
             onClick={toggleLanguage}
             aria-label={t.nav.ariaToggle}
@@ -229,7 +200,7 @@ function Header() {
             <ArrowIcon className="h-3.5 w-3.5" />
           </a>
 
-          {/* Mobile Menu Hamburger Toggle (Mobile-Only) */}
+          {/* Mobile Menu Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
@@ -283,12 +254,41 @@ function Header() {
 }
 
 function Hero() {
-  const { t } = useLanguage();
+  const { language, toggleLanguage, t } = useLanguage();
 
   return (
-    <section className="relative mx-auto max-w-5xl px-4 pt-10 sm:pt-16 pb-12 sm:pb-20 text-center sm:px-6 lg:px-8">
-      {/* Centered Free-Floating Logo Illuminated Gracefully by the Top Sunrise */}
-      <div className="relative mx-auto mb-6 sm:mb-8 flex flex-col items-center justify-center">
+    <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-4 pt-12 sm:pt-16 pb-14 sm:pb-20 text-center sm:px-6 lg:px-8 overflow-hidden">
+      {/* Floating Language Toggle in Top Corner — Leaves the sunrise pristine */}
+      <div className="absolute top-4 sm:top-6 end-4 sm:end-8 z-30">
+        <button
+          onClick={toggleLanguage}
+          aria-label={t.nav.ariaToggle}
+          className="group flex items-center gap-1.5 sm:gap-2 rounded-full border border-amber-300/80 bg-white/90 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-[var(--navy)] shadow-xs transition hover:border-amber-400 hover:bg-white cursor-pointer min-h-[36px]"
+        >
+          <Globe className="h-3.5 w-3.5 text-amber-600 transition-transform duration-300 group-hover:rotate-45" />
+          <span className="font-bold">{language === "en" ? "العربية" : "English"}</span>
+        </button>
+      </div>
+
+      {/* Radiant Top Sunrise Dome — Radiating vividly from the very top of the window */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[480px] sm:h-[540px] z-0 overflow-hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse 780px 360px at 50% 0%, rgba(245, 158, 11, 0.48) 0%, rgba(251, 191, 36, 0.32) 28%, rgba(254, 240, 138, 0.16) 58%, transparent 84%), radial-gradient(ellipse 460px 220px at 50% 0%, rgba(234, 160, 35, 0.62) 0%, rgba(245, 158, 11, 0.35) 42%, transparent 88%)",
+          filter: "blur(10px)",
+        }}
+      />
+
+      {/* Additional soft morning light wash */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-amber-400/15 via-yellow-200/5 to-transparent z-0"
+      />
+
+      {/* Free-Floating Official Logo in the light of the Sunrise */}
+      <div className="relative z-10 mx-auto mb-6 sm:mb-8 flex flex-col items-center justify-center">
         <img
           src={LOGO_SRC}
           alt="Second Chance Transplant Foundation emblem"
@@ -297,31 +297,24 @@ function Hero() {
         />
       </div>
 
-      {/* Pill Badge: COMING SOON */}
-      <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-amber-300/80 bg-amber-50/75 px-4 py-1.5 shadow-2xs">
-        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-amber-900">
-          {t.hero.badge}
-        </span>
-      </div>
-
       {/* Main Heading: Our Mission Begins Soon */}
       <h1
-        className="animate-fade-up mt-5 sm:mt-6 font-serif text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--navy)] max-w-4xl mx-auto leading-[1.15]"
+        className="animate-fade-up relative z-10 font-serif text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--navy)] max-w-4xl mx-auto leading-[1.15]"
         style={{ animationDelay: "120ms" }}
       >
         {t.hero.title}
       </h1>
 
-      {/* Subtitle: Second Chance Transplant Foundation */}
+      {/* Slogan: A Second Chance A New Life */}
       <p
-        className="animate-fade-up mt-3 sm:mt-4 font-serif text-base sm:text-xl md:text-2xl font-medium text-[var(--leaf)] max-w-2xl mx-auto"
+        className="animate-fade-up relative z-10 mt-3 sm:mt-4 font-serif text-lg sm:text-2xl md:text-3xl font-medium text-[var(--leaf)] max-w-2xl mx-auto"
         style={{ animationDelay: "220ms" }}
       >
-        {t.hero.foundationName}
+        {t.hero.slogan}
       </p>
 
-      {/* Discreet Editorial Down Scroll Arrow */}
-      <div className="mt-10 sm:mt-14 flex justify-center">
+      {/* Discreet Down Chevron Icon to Scroll Down */}
+      <div className="relative z-10 mt-10 sm:mt-14 flex justify-center">
         <a
           href="#story"
           aria-label={t.hero.scrollToStory}
@@ -345,7 +338,7 @@ function ImpactBar() {
   ];
 
   return (
-    <section id="impact" className="border-y border-stone-200/80 bg-[var(--card)] py-8 sm:py-10">
+    <section id="impact" className="border-b border-stone-200/80 bg-[var(--card)] py-8 sm:py-10">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4 md:divide-x md:divide-stone-200/80">
           {stats.map((stat, idx) => (
@@ -624,7 +617,6 @@ function Connect() {
     })();
 
     // 2. High-speed resilient notification dispatch via Resend
-    // Dual-channel: Direct API route with automatic TanStack RPC fallback
     const notifyPromise = fetch("/api/notify-lead", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -886,7 +878,7 @@ function Footer() {
         </div>
 
         <p className="font-serif italic text-base sm:text-lg text-stone-600 max-w-2xl mx-auto">
-          {t.footer.tagline}
+          {t.hero.slogan}
         </p>
 
         <p className="text-xs sm:text-sm text-stone-500 max-w-xl mx-auto leading-relaxed">
