@@ -6,6 +6,7 @@
     "name": "Bavly Hamdy",
     "url": "https://www.linkedin.com/in/bavly-hamdy"
   },
+  "license": "MIT",
   "private": true,
   "sideEffects": false,
   "type": "module",
