@@ -9,17 +9,11 @@ import {
   ArrowRight,
   ArrowLeft,
   ChevronDown,
-  Heart,
-  ShieldCheck,
   CheckCircle2,
   User,
   Mail,
   Phone,
-  Calendar,
-  Award,
   Loader2,
-  Clock,
-  Sun,
   Menu,
   X,
 } from "lucide-react";
@@ -117,7 +111,6 @@ function Index() {
         <Hero />
         <ImpactBar />
         <FoundingChronicle />
-        <FourChapters />
         <Connect />
         <Footer />
       </main>
@@ -179,12 +172,6 @@ function Header() {
               {t.nav.story}
             </a>
             <a
-              href="#four-chapters"
-              className="transition hover:text-[var(--navy)] relative py-1 hover:border-b-2 hover:border-[var(--leaf)]"
-            >
-              {t.nav.journey}
-            </a>
-            <a
               href="#connect"
               className="transition hover:text-[var(--navy)] relative py-1 hover:border-b-2 hover:border-[var(--leaf)]"
             >
@@ -239,13 +226,6 @@ function Header() {
               className="py-2 px-3 rounded-lg hover:bg-stone-100 transition"
             >
               {t.nav.story}
-            </a>
-            <a
-              href="#four-chapters"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded-lg hover:bg-stone-100 transition"
-            >
-              {t.nav.journey}
             </a>
             <a
               href="#connect"
@@ -371,25 +351,19 @@ function FoundingChronicle() {
       id="story"
       className="relative mx-auto max-w-4xl px-4 py-16 sm:py-24 sm:px-6 lg:px-8"
     >
-      {/* Archival Dispatch Header */}
+      {/* Archival Dispatch Header (Clean, NO date pill badge) */}
       <Reveal className="border-b border-stone-200 pb-5 sm:pb-6 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/80 bg-amber-50 px-3.5 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-amber-900 shadow-2xs mb-3">
-          <Calendar className="h-3.5 w-3.5 text-amber-600 shrink-0" />
-          <span>{t.chronicle.date}</span>
-        </div>
-        <h2 className="mt-2 font-serif text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--navy)]">
+        <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--navy)]">
           {t.chronicle.title}
         </h2>
       </Reveal>
 
       {/* Main Journal / Letter Body */}
       <article className="mt-8 sm:mt-10 space-y-6 sm:space-y-8 font-sans text-stone-800">
-        {/* Paragraph 1 - Uncertainty & Hope */}
+        {/* Paragraph 1 - Uncertainty & Hope (Clean typography, NO drop-cap) */}
         <Reveal>
           <div className="paper-panel rounded-2xl p-6 sm:p-8 md:p-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose">
-            <p className="first-letter:float-left first-letter:text-4xl sm:first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-[var(--navy)] first-letter:mr-3 first-letter:leading-none">
-              {t.chronicle.p1}
-            </p>
+            <p>{t.chronicle.p1}</p>
           </div>
         </Reveal>
 
@@ -426,135 +400,18 @@ function FoundingChronicle() {
         <Reveal>
           <div className="paper-panel rounded-2xl p-6 sm:p-8 md:p-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose bg-stone-50/60">
             <p>{t.chronicle.p4}</p>
-            {/* Signature Block */}
-            <div className="mt-6 sm:mt-8 border-t border-stone-200/80 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <p className="font-serif text-lg sm:text-xl font-bold text-[var(--navy)]">
-                  {t.chronicle.signatureName}
-                </p>
-                <p className="text-[11px] sm:text-xs font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
-                  {t.chronicle.signatureRole}
-                </p>
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-[var(--card)] px-3.5 py-1 text-xs font-medium text-stone-600 self-start sm:self-auto">
-                <ShieldCheck className="h-3.5 w-3.5 text-[var(--leaf)]" />
-                <span>Non-Profit Charter</span>
-              </div>
+            {/* Signature Block (Clean, NO Non-Profit Charter badge) */}
+            <div className="mt-6 sm:mt-8 border-t border-stone-200/80 pt-6">
+              <p className="font-serif text-lg sm:text-xl font-bold text-[var(--navy)]">
+                {t.chronicle.signatureName}
+              </p>
+              <p className="text-[11px] sm:text-xs font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
+                {t.chronicle.signatureRole}
+              </p>
             </div>
           </div>
         </Reveal>
       </article>
-    </section>
-  );
-}
-
-function FourChapters() {
-  const { t } = useLanguage();
-
-  const stages = [
-    {
-      num: t.chapters.c1Number,
-      title: t.chapters.c1Title,
-      lead: t.chapters.c1Lead,
-      desc: t.chapters.c1Desc,
-      icon: Clock,
-      tag: "THE WAITLIST STAGE",
-    },
-    {
-      num: t.chapters.c2Number,
-      title: t.chapters.c2Title,
-      lead: t.chapters.c2Lead,
-      desc: t.chapters.c2Desc,
-      icon: Sun,
-      tag: "THE TRANSITION STAGE",
-    },
-    {
-      num: t.chapters.c3Number,
-      title: t.chapters.c3Title,
-      lead: t.chapters.c3Lead,
-      desc: t.chapters.c3Desc,
-      icon: Heart,
-      tag: "THE HEALING STAGE",
-    },
-    {
-      num: t.chapters.c4Number,
-      title: t.chapters.c4Title,
-      lead: t.chapters.c4Lead,
-      desc: t.chapters.c4Desc,
-      icon: Award,
-      tag: "THE DONOR LEGACY",
-    },
-  ];
-
-  return (
-    <section
-      id="four-chapters"
-      className="border-t border-stone-200 bg-[var(--card)]/60 py-16 sm:py-24"
-    >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <Reveal className="text-center max-w-3xl mx-auto">
-          <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--leaf)]">
-            {t.chapters.kicker}
-          </span>
-          <h2 className="mt-2.5 sm:mt-3 font-serif text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--navy)]">
-            {t.chapters.title}
-          </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-stone-600">
-            {t.chapters.subtitle}
-          </p>
-        </Reveal>
-
-        {/* 4 Humane Chapters - Fully Responsive Grid */}
-        <div className="mt-12 sm:mt-16 grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2">
-          {stages.map((stage, idx) => {
-            const Icon = stage.icon;
-            return (
-              <Reveal key={idx} className="h-full">
-                <article className="paper-card flex h-full flex-col justify-between rounded-2xl p-6 sm:p-8 md:p-10 transition duration-300 hover:border-stone-400 hover:shadow-paper">
-                  <div>
-                    {/* Chapter Header */}
-                    <div className="flex items-center justify-between border-b border-stone-200/80 pb-3.5">
-                      <span className="font-mono text-xs font-bold text-amber-800 tracking-wider">
-                        {stage.num}
-                      </span>
-                      <span className="rounded bg-stone-100 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-stone-600">
-                        {stage.tag}
-                      </span>
-                    </div>
-
-                    {/* Title & Icon */}
-                    <div className="mt-5 sm:mt-6 flex items-start gap-3.5 sm:gap-4">
-                      <div className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-[var(--leaf)] border border-amber-200/60">
-                        <Icon className="h-5 w-5 stroke-[2]" />
-                      </div>
-                      <div>
-                        <h3 className="font-serif text-xl sm:text-2xl font-bold text-[var(--navy)]">
-                          {stage.title}
-                        </h3>
-                        <p className="mt-1 font-serif text-sm sm:text-base italic text-stone-600">
-                          {stage.lead}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-base leading-relaxed text-stone-700">
-                      {stage.desc}
-                    </p>
-                  </div>
-
-                  {/* Footnote */}
-                  <div className="mt-6 sm:mt-8 pt-4 border-t border-stone-100 flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold text-[var(--leaf)] uppercase tracking-wider">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--leaf)]" />
-                    <span>Second Chance Care Commitment</span>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
-      </div>
     </section>
   );
 }
