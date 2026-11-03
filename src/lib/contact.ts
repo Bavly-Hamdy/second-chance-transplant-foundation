@@ -10,14 +10,6 @@ export function detectContactType(value: string): "email" | "phone" | null {
   return null;
 }
 
-export function validateContactValue(value: string): {
-  isValid: boolean;
-  type: "email" | "phone" | null;
-} {
-  const type = detectContactType(value);
-  return { isValid: type !== null, type };
-}
-
 export function getLeadSchema(lang: "en" | "ar" = "en") {
   const isAr = lang === "ar";
   return z.object({
@@ -60,38 +52,6 @@ export function getLeadSchema(lang: "en" | "ar" = "en") {
       )
       .optional()
       .default(""),
-  });
-}
-
-export function getSingleLeadSchema(lang: "en" | "ar" = "en") {
-  const isAr = lang === "ar";
-  return z.object({
-    name: z
-      .string()
-      .trim()
-      .min(
-        2,
-        isAr
-          ? "يرجى إدخال اسمك الكريم (حرفين على الأقل)"
-          : "Please enter your name (at least 2 characters)",
-      )
-      .max(80, isAr ? "الاسم طويل جداً" : "Name is too long"),
-    contact: z
-      .string()
-      .trim()
-      .min(
-        5,
-        isAr
-          ? "يرجى إدخال بريدك الإلكتروني أو رقم هاتفك"
-          : "Please enter your email or phone number",
-      )
-      .max(255, isAr ? "البيانات طويلة جداً" : "Contact info is too long")
-      .refine(
-        (v) => detectContactType(v) !== null,
-        isAr
-          ? "يرجى إدخال بريد إلكتروني صحيح أو رقم هاتف صالح"
-          : "Please enter a valid email or phone number",
-      ),
   });
 }
 
