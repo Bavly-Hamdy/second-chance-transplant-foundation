@@ -110,13 +110,11 @@ function Index() {
         isRtl ? "rtl text-right" : "ltr text-left"
       }`}
     >
+      {/* Top Fixed Humanist Navigation with Smooth Scroll Blur */}
+      <Header />
+
       <main className="relative overflow-x-hidden">
-        {/* Hero Section with Radiant Top Sunrise and No Occlusions */}
         <Hero />
-
-        {/* Sticky Humanist Navigation when browsing the site */}
-        <Header />
-
         <ImpactBar />
         <FoundingChronicle />
         <FourChapters />
@@ -130,11 +128,27 @@ function Index() {
 function Header() {
   const { language, toggleLanguage, t, isRtl } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 25);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full border-y border-stone-200/80 bg-[var(--background)]/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 sm:h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-stone-200/80 bg-[var(--background)]/90 backdrop-blur-md shadow-2xs"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand with Official Crest */}
         <a
           href="#"
@@ -143,7 +157,7 @@ function Header() {
           <img
             src={LOGO_SRC}
             alt="Second Chance Transplant Foundation emblem"
-            className="h-9 sm:h-10 w-auto object-contain shrink-0 drop-shadow-xs"
+            className="h-8 sm:h-10 w-auto object-contain shrink-0 drop-shadow-xs"
           />
           <div className="flex flex-col min-w-0">
             <span className="font-serif text-sm sm:text-base md:text-lg font-bold tracking-tight text-[var(--navy)] leading-tight truncate">
@@ -157,7 +171,7 @@ function Header() {
 
         {/* Desktop Navigation & Controls */}
         <div className="flex items-center gap-2.5 sm:gap-4 md:gap-6">
-          <nav className="hidden md:flex items-center gap-6 lg:gap-7 text-xs font-semibold uppercase tracking-wider text-stone-600">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-7 text-xs font-semibold uppercase tracking-wider text-stone-700">
             <a
               href="#story"
               className="transition hover:text-[var(--navy)] relative py-1 hover:border-b-2 hover:border-[var(--leaf)]"
@@ -182,11 +196,15 @@ function Header() {
           <button
             onClick={toggleLanguage}
             aria-label={t.nav.ariaToggle}
-            className="group flex items-center gap-1.5 sm:gap-2 rounded-full border border-stone-300/80 bg-[var(--card)] px-3 py-1.5 sm:px-3.5 text-xs font-semibold text-[var(--navy)] shadow-2xs transition hover:border-amber-400 hover:bg-stone-50 cursor-pointer min-h-[36px]"
+            className={`group flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 text-xs font-semibold text-[var(--navy)] shadow-2xs transition cursor-pointer min-h-[36px] ${
+              scrolled
+                ? "border-stone-300/80 bg-[var(--card)] hover:border-amber-400 hover:bg-stone-50"
+                : "border-amber-300/70 bg-white/75 backdrop-blur-xs hover:border-amber-400 hover:bg-white"
+            }`}
           >
-            <Globe className="h-3.5 w-3.5 text-stone-500 transition-transform duration-300 group-hover:rotate-45" />
+            <Globe className="h-3.5 w-3.5 text-amber-600 transition-transform duration-300 group-hover:rotate-45" />
             <span className="hidden xs:inline">{t.nav.langToggle}</span>
-            <span className="rounded bg-stone-100 px-1.5 py-0.5 text-[9px] font-bold text-stone-700 uppercase">
+            <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold text-amber-900 uppercase">
               {language === "en" ? "AR" : "EN"}
             </span>
           </button>
@@ -204,7 +222,7 @@ function Header() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
-            className="md:hidden flex items-center justify-center p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition border border-stone-200 cursor-pointer"
+            className="md:hidden flex items-center justify-center p-2 rounded-xl text-stone-700 hover:bg-white/80 transition border border-stone-200/80 cursor-pointer bg-white/60"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -213,7 +231,7 @@ function Header() {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-stone-200 bg-[var(--card)] px-4 py-5 shadow-lg animate-fade-up">
+        <div className="md:hidden border-b border-stone-200 bg-[var(--card)]/95 backdrop-blur-md px-4 py-5 shadow-lg animate-fade-up">
           <nav className="flex flex-col space-y-3.5 text-sm font-semibold uppercase tracking-wider text-stone-700">
             <a
               href="#story"
@@ -254,29 +272,17 @@ function Header() {
 }
 
 function Hero() {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-4 pt-12 sm:pt-16 pb-14 sm:pb-20 text-center sm:px-6 lg:px-8 overflow-hidden">
-      {/* Floating Language Toggle in Top Corner — Leaves the sunrise pristine */}
-      <div className="absolute top-4 sm:top-6 end-4 sm:end-8 z-30">
-        <button
-          onClick={toggleLanguage}
-          aria-label={t.nav.ariaToggle}
-          className="group flex items-center gap-1.5 sm:gap-2 rounded-full border border-amber-300/80 bg-white/90 backdrop-blur-md px-3.5 py-1.5 text-xs font-semibold text-[var(--navy)] shadow-xs transition hover:border-amber-400 hover:bg-white cursor-pointer min-h-[36px]"
-        >
-          <Globe className="h-3.5 w-3.5 text-amber-600 transition-transform duration-300 group-hover:rotate-45" />
-          <span className="font-bold">{language === "en" ? "العربية" : "English"}</span>
-        </button>
-      </div>
-
-      {/* Radiant Top Sunrise Dome — Radiating vividly from the very top of the window */}
+    <section className="relative min-h-[95vh] flex flex-col justify-center items-center px-4 pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
+      {/* Radiant Top Sunrise Dome — Radiating smoothly from the very top of the window */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[480px] sm:h-[540px] z-0 overflow-hidden"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] sm:h-[600px] z-0 overflow-hidden"
         style={{
           background:
-            "radial-gradient(ellipse 780px 360px at 50% 0%, rgba(245, 158, 11, 0.48) 0%, rgba(251, 191, 36, 0.32) 28%, rgba(254, 240, 138, 0.16) 58%, transparent 84%), radial-gradient(ellipse 460px 220px at 50% 0%, rgba(234, 160, 35, 0.62) 0%, rgba(245, 158, 11, 0.35) 42%, transparent 88%)",
+            "radial-gradient(ellipse 820px 380px at 50% 0%, rgba(245, 158, 11, 0.48) 0%, rgba(251, 191, 36, 0.32) 28%, rgba(254, 240, 138, 0.16) 58%, transparent 84%), radial-gradient(ellipse 480px 240px at 50% 0%, rgba(234, 160, 35, 0.62) 0%, rgba(245, 158, 11, 0.35) 42%, transparent 88%)",
           filter: "blur(10px)",
         }}
       />
@@ -284,7 +290,7 @@ function Hero() {
       {/* Additional soft morning light wash */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-gradient-to-b from-amber-400/15 via-yellow-200/5 to-transparent z-0"
+        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-amber-400/15 via-yellow-200/5 to-transparent z-0"
       />
 
       {/* Free-Floating Official Logo in the light of the Sunrise */}
