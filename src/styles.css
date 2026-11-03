@@ -114,31 +114,61 @@
   letter-spacing: -0.01em;
   color: var(--navy);
 }
-@utility hero-sunrise-backdrop {
+/* Responsive Calm Sunrise Atmosphere (Desktop arch & Mobile column) */
+.hero-sunrise-atmosphere {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 950px;
-  height: 420px;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(
-      ellipse 640px 280px at 50% 0%,
-      rgba(245, 158, 11, 0.22) 0%,
-      rgba(251, 191, 36, 0.14) 34%,
-      rgba(254, 243, 199, 0.06) 68%,
-      transparent 88%
-    ),
-    radial-gradient(
-      ellipse 380px 160px at 50% 0%,
-      rgba(234, 160, 35, 0.26) 0%,
-      rgba(245, 158, 11, 0.12) 48%,
-      transparent 90%
-    );
-  filter: blur(20px);
+  overflow: hidden;
+}
+
+@media (max-width: 639px) {
+  .hero-sunrise-atmosphere {
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
+    background:
+      radial-gradient(
+        ellipse 220px 280px at 50% -10px,
+        rgba(245, 158, 11, 0.24) 0%,
+        rgba(251, 191, 36, 0.15) 35%,
+        rgba(254, 240, 138, 0.06) 65%,
+        transparent 85%
+      ),
+      radial-gradient(
+        ellipse 140px 180px at 50% 0%,
+        rgba(234, 160, 35, 0.26) 0%,
+        rgba(245, 158, 11, 0.11) 48%,
+        transparent 82%
+      );
+    filter: blur(20px);
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-sunrise-atmosphere {
+    width: 100%;
+    max-width: 960px;
+    height: 440px;
+    background:
+      radial-gradient(
+        ellipse 720px 300px at 50% -10px,
+        rgba(245, 158, 11, 0.20) 0%,
+        rgba(251, 191, 36, 0.13) 36%,
+        rgba(254, 243, 199, 0.05) 68%,
+        transparent 88%
+      ),
+      radial-gradient(
+        ellipse 400px 160px at 50% 0%,
+        rgba(234, 160, 35, 0.22) 0%,
+        rgba(245, 158, 11, 0.10) 48%,
+        transparent 88%
+      );
+    filter: blur(24px);
+  }
 }
 @utility sunrise-subtle {
   background: radial-gradient(

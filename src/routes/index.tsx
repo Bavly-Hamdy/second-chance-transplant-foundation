@@ -254,17 +254,9 @@ function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-4 pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
-      {/* Soft, Serene Top Sunrise Dome — Calm, delicate, and matching reference image */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[460px] sm:h-[520px] z-0 overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse 680px 300px at 50% 0%, rgba(245, 158, 11, 0.22) 0%, rgba(251, 191, 36, 0.14) 35%, rgba(254, 243, 199, 0.06) 68%, transparent 88%), radial-gradient(ellipse 380px 160px at 50% 0%, rgba(234, 160, 35, 0.26) 0%, rgba(245, 158, 11, 0.12) 45%, transparent 88%)",
-          filter: "blur(22px)",
-        }}
-      />
+    <section className="relative min-h-[90vh] sm:min-h-[92vh] flex flex-col justify-center items-center px-4 pt-24 xs:pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
+      {/* Soft, Serene Top Sunrise Atmosphere — Calm, delicate golden dawn light */}
+      <div aria-hidden className="hero-sunrise-atmosphere" />
 
       {/* Free-Floating Official Logo in the light of the Sunrise */}
       <div className="relative z-10 mx-auto mb-6 sm:mb-8 flex flex-col items-center justify-center">
