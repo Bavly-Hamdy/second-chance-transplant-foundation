@@ -109,7 +109,6 @@ function Index() {
 
       <main className="relative overflow-x-hidden">
         <Hero />
-        <ImpactBar />
         <FoundingChronicle />
         <Connect />
         <Footer />
@@ -255,22 +254,16 @@ function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[95vh] flex flex-col justify-center items-center px-4 pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
-      {/* Radiant Top Sunrise Dome — Radiating smoothly from the very top of the window */}
+    <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-4 pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
+      {/* Soft, Serene Top Sunrise Dome — Calm, delicate, and matching reference image */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px] sm:h-[600px] z-0 overflow-hidden"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[460px] sm:h-[520px] z-0 overflow-hidden"
         style={{
           background:
-            "radial-gradient(ellipse 820px 380px at 50% 0%, rgba(245, 158, 11, 0.48) 0%, rgba(251, 191, 36, 0.32) 28%, rgba(254, 240, 138, 0.16) 58%, transparent 84%), radial-gradient(ellipse 480px 240px at 50% 0%, rgba(234, 160, 35, 0.62) 0%, rgba(245, 158, 11, 0.35) 42%, transparent 88%)",
-          filter: "blur(10px)",
+            "radial-gradient(ellipse 680px 300px at 50% 0%, rgba(245, 158, 11, 0.22) 0%, rgba(251, 191, 36, 0.14) 35%, rgba(254, 243, 199, 0.06) 68%, transparent 88%), radial-gradient(ellipse 380px 160px at 50% 0%, rgba(234, 160, 35, 0.26) 0%, rgba(245, 158, 11, 0.12) 45%, transparent 88%)",
+          filter: "blur(22px)",
         }}
-      />
-
-      {/* Additional soft morning light wash */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-amber-400/15 via-yellow-200/5 to-transparent z-0"
       />
 
       {/* Free-Floating Official Logo in the light of the Sunrise */}
@@ -308,36 +301,6 @@ function Hero() {
         >
           <ChevronDown className="h-6 w-6 stroke-[1.8]" />
         </a>
-      </div>
-    </section>
-  );
-}
-
-function ImpactBar() {
-  const { t } = useLanguage();
-
-  const stats = [
-    { number: t.impact.stat1Number, label: t.impact.stat1Label },
-    { number: t.impact.stat2Number, label: t.impact.stat2Label },
-    { number: t.impact.stat3Number, label: t.impact.stat3Label },
-    { number: t.impact.stat4Number, label: t.impact.stat4Label },
-  ];
-
-  return (
-    <section id="impact" className="border-b border-stone-200/80 bg-[var(--card)] py-8 sm:py-10">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4 md:divide-x md:divide-stone-200/80">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center px-2 sm:px-4">
-              <span className="font-serif text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-[var(--navy)]">
-                {stat.number}
-              </span>
-              <span className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-stone-600 max-w-[180px] leading-tight">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

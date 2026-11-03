@@ -120,25 +120,25 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1200px;
-  height: 520px;
+  max-width: 950px;
+  height: 420px;
   pointer-events: none;
   z-index: 0;
   background:
     radial-gradient(
-      ellipse 760px 360px at 50% 0%,
-      rgba(245, 158, 11, 0.48) 0%,
-      rgba(251, 191, 36, 0.34) 28%,
-      rgba(254, 240, 138, 0.18) 55%,
-      transparent 84%
+      ellipse 640px 280px at 50% 0%,
+      rgba(245, 158, 11, 0.22) 0%,
+      rgba(251, 191, 36, 0.14) 34%,
+      rgba(254, 243, 199, 0.06) 68%,
+      transparent 88%
     ),
     radial-gradient(
-      ellipse 460px 220px at 50% 0%,
-      rgba(234, 160, 35, 0.6) 0%,
-      rgba(245, 158, 11, 0.32) 44%,
-      transparent 88%
+      ellipse 380px 160px at 50% 0%,
+      rgba(234, 160, 35, 0.26) 0%,
+      rgba(245, 158, 11, 0.12) 48%,
+      transparent 90%
     );
-  filter: blur(14px);
+  filter: blur(20px);
 }
 @utility sunrise-subtle {
   background: radial-gradient(
