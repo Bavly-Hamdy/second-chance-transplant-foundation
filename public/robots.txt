@@ -1,0 +1,6 @@
+# Robots.txt for Second Chance Transplant Foundation
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://secondchancetransplant.org/sitemap.xml
