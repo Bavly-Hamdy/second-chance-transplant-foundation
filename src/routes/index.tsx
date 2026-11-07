@@ -276,14 +276,6 @@ function Hero() {
         {t.hero.title}
       </h1>
 
-      {/* Slogan: A Second Chance A New Life */}
-      <p
-        className="animate-fade-up relative z-10 mt-3 sm:mt-4 font-serif text-lg sm:text-2xl md:text-3xl font-medium text-[var(--leaf)] max-w-2xl mx-auto"
-        style={{ animationDelay: "220ms" }}
-      >
-        {t.hero.slogan}
-      </p>
-
       {/* Discreet Down Chevron Icon to Scroll Down */}
       <div className="relative z-10 mt-10 sm:mt-14 flex justify-center">
         <a
@@ -304,66 +296,46 @@ function FoundingChronicle() {
   return (
     <section
       id="story"
-      className="relative mx-auto max-w-4xl px-4 py-16 sm:py-24 sm:px-6 lg:px-8"
+      className="relative mx-auto max-w-3xl px-4 py-12 sm:py-20 sm:px-6 lg:px-8"
     >
-      {/* Archival Dispatch Header (Clean, NO date pill badge) */}
-      <Reveal className="border-b border-stone-200 pb-5 sm:pb-6 text-center">
-        <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--navy)]">
-          {t.chronicle.title}
-        </h2>
-      </Reveal>
-
-      {/* Main Journal / Letter Body */}
-      <article className="mt-8 sm:mt-10 space-y-6 sm:space-y-8 font-sans text-stone-800">
-        {/* Paragraph 1 - Uncertainty & Hope (Clean typography, NO drop-cap) */}
+      {/* Main Journal / Continuous Warm Human Letter — Flows smoothly directly on the cream page */}
+      <article className="space-y-8 sm:space-y-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-stone-800 font-sans">
+        {/* Paragraph 1 - Uncertainty & Hope */}
         <Reveal>
-          <div className="paper-panel rounded-2xl p-6 sm:p-8 md:p-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose">
-            <p>{t.chronicle.p1}</p>
-          </div>
+          <p>{t.chronicle.p1}</p>
         </Reveal>
 
         {/* Paragraph 2 - The Personal Miracle & May 21, 2016 */}
         <Reveal>
-          <div className="paper-panel rounded-2xl p-6 sm:p-8 md:p-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose border-l-4 border-l-amber-500">
-            <p>{t.chronicle.p2}</p>
-          </div>
+          <p>{t.chronicle.p2}</p>
         </Reveal>
 
-        {/* Central Creed Pull-Quote - Paragraph 3 */}
-        <Reveal className="my-8 sm:my-12">
-          <figure className="rounded-2xl border border-stone-200 bg-amber-50/40 p-6 sm:p-10 md:p-12 text-center shadow-2xs">
-            <span className="font-serif text-5xl sm:text-6xl text-amber-700/30 leading-none select-none">
-              “
-            </span>
-            <blockquote className="-mt-3 sm:-mt-4 font-serif text-lg sm:text-2xl md:text-3xl lg:text-4xl font-medium italic text-[var(--navy)] leading-snug">
-              {t.chronicle.quoteText}
-            </blockquote>
-            <figcaption className="mt-4 sm:mt-6 text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[var(--leaf)]">
-              — {t.chronicle.quoteCaption}
-            </figcaption>
-          </figure>
+        {/* Central Creed Pull-Quote — Elegant, unboxed, and clean without signature */}
+        <Reveal className="my-10 sm:my-14">
+          <blockquote className="border-l-2 rtl:border-l-0 rtl:border-r-2 border-amber-500/70 pl-6 sm:pl-8 rtl:pl-0 rtl:pr-6 rtl:pr-8 py-2 font-serif text-xl sm:text-2xl md:text-3xl font-medium italic text-[var(--navy)] leading-relaxed sm:leading-snug">
+            {t.chronicle.quoteText}
+          </blockquote>
         </Reveal>
 
-        {/* Paragraph 4 - The Mission Beside You */}
+        {/* Paragraph 3 - The Mission Beside You */}
         <Reveal>
-          <div className="paper-panel rounded-2xl p-6 sm:p-8 md:p-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose">
-            <p>{t.chronicle.p3}</p>
-          </div>
+          <p>{t.chronicle.p3}</p>
         </Reveal>
 
-        {/* Paragraph 5 - Laying the Groundwork & Digital Home */}
+        {/* Paragraph 4 - Laying the Groundwork & Digital Home */}
         <Reveal>
-          <div className="paper-panel rounded-2xl p-6 sm:p-8 md:p-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose bg-stone-50/60">
-            <p>{t.chronicle.p4}</p>
-            {/* Signature Block (Clean, NO Non-Profit Charter badge) */}
-            <div className="mt-6 sm:mt-8 border-t border-stone-200/80 pt-6">
-              <p className="font-serif text-lg sm:text-xl font-bold text-[var(--navy)]">
-                {t.chronicle.signatureName}
-              </p>
-              <p className="text-[11px] sm:text-xs font-semibold text-stone-500 uppercase tracking-wider mt-0.5">
-                {t.chronicle.signatureRole}
-              </p>
-            </div>
+          <p>{t.chronicle.p4}</p>
+        </Reveal>
+
+        {/* Warm, dignified sign-off */}
+        <Reveal>
+          <div className="pt-6 sm:pt-8 text-[var(--navy)]">
+            <p className="font-serif text-xl sm:text-2xl font-bold">
+              {t.chronicle.signatureName}
+            </p>
+            <p className="text-xs sm:text-sm font-semibold text-stone-500 uppercase tracking-wider mt-1">
+              {t.chronicle.signatureRole}
+            </p>
           </div>
         </Reveal>
       </article>
@@ -472,7 +444,7 @@ function Connect() {
   return (
     <section id="connect" className="relative mx-auto max-w-2xl px-4 py-16 sm:py-24 sm:px-6">
       <Reveal>
-        <div className="paper-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-stone-300/80 shadow-paper">
+        <div className="rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 border border-stone-200/90 bg-white/70 backdrop-blur-xs shadow-xs">
           <div aria-live="polite">
             {status === "success" ? (
               <div className="py-6 sm:py-8 text-center animate-fade-up">
