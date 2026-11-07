@@ -255,15 +255,15 @@ function Hero() {
 
   return (
     <section className="relative min-h-[90vh] sm:min-h-[92vh] flex flex-col justify-center items-center px-4 pt-24 xs:pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
-      {/* Soft, Serene Top Sunrise Atmosphere — Calm, delicate golden dawn light */}
-      <div aria-hidden className="hero-sunrise-atmosphere" />
-
-      {/* Free-Floating Official Logo in the light of the Sunrise */}
+      {/* Free-Floating Official Logo with the Sun Atmosphere directly behind it */}
       <div className="relative z-10 mx-auto mb-6 sm:mb-8 flex flex-col items-center justify-center">
+        {/* Soft, Serene Sun Glow Aura directly behind the logo */}
+        <div aria-hidden className="hero-sun-behind-logo" />
+
         <img
           src={LOGO_SRC}
           alt="Second Chance Transplant Foundation emblem"
-          className="animate-float relative z-10 w-44 xs:w-52 sm:w-64 md:w-72 lg:w-80 max-w-full h-auto object-contain drop-shadow-sm transition-transform duration-500 hover:scale-[1.02]"
+          className="animate-float relative z-10 w-56 xs:w-64 sm:w-80 md:w-[22rem] lg:w-[26rem] max-w-full h-auto object-contain drop-shadow-sm transition-transform duration-500 hover:scale-[1.02]"
           fetchPriority="high"
         />
       </div>

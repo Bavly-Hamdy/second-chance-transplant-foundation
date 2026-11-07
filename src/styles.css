@@ -114,60 +114,59 @@
   letter-spacing: -0.01em;
   color: var(--navy);
 }
-/* Responsive Calm Sunrise Atmosphere (Desktop arch & Mobile column) */
-.hero-sunrise-atmosphere {
+/* Sun Atmosphere placed directly behind the Logo */
+.hero-sun-behind-logo {
   position: absolute;
-  top: 0;
+  top: 42%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
+  border-radius: 9999px;
+  overflow: visible;
 }
 
 @media (max-width: 639px) {
-  .hero-sunrise-atmosphere {
-    width: 100%;
-    max-width: 320px;
-    height: 380px;
+  .hero-sun-behind-logo {
+    width: 330px;
+    height: 330px;
     background:
       radial-gradient(
-        ellipse 220px 280px at 50% -10px,
-        rgba(245, 158, 11, 0.24) 0%,
-        rgba(251, 191, 36, 0.15) 35%,
-        rgba(254, 240, 138, 0.06) 65%,
-        transparent 85%
+        circle,
+        rgba(245, 158, 11, 0.32) 0%,
+        rgba(251, 191, 36, 0.20) 36%,
+        rgba(254, 240, 138, 0.08) 62%,
+        transparent 78%
       ),
       radial-gradient(
-        ellipse 140px 180px at 50% 0%,
-        rgba(234, 160, 35, 0.26) 0%,
-        rgba(245, 158, 11, 0.11) 48%,
-        transparent 82%
+        circle,
+        rgba(234, 160, 35, 0.28) 0%,
+        rgba(245, 158, 11, 0.12) 50%,
+        transparent 80%
       );
-    filter: blur(20px);
+    filter: blur(24px);
   }
 }
 
 @media (min-width: 640px) {
-  .hero-sunrise-atmosphere {
-    width: 100%;
-    max-width: 960px;
-    height: 440px;
+  .hero-sun-behind-logo {
+    width: 600px;
+    height: 560px;
     background:
       radial-gradient(
-        ellipse 720px 300px at 50% -10px,
-        rgba(245, 158, 11, 0.20) 0%,
-        rgba(251, 191, 36, 0.13) 36%,
-        rgba(254, 243, 199, 0.05) 68%,
-        transparent 88%
+        ellipse 560px 500px at 50% 50%,
+        rgba(245, 158, 11, 0.28) 0%,
+        rgba(251, 191, 36, 0.18) 38%,
+        rgba(254, 243, 199, 0.07) 65%,
+        transparent 80%
       ),
       radial-gradient(
-        ellipse 400px 160px at 50% 0%,
-        rgba(234, 160, 35, 0.22) 0%,
-        rgba(245, 158, 11, 0.10) 48%,
-        transparent 88%
+        ellipse 380px 340px at 50% 50%,
+        rgba(234, 160, 35, 0.24) 0%,
+        rgba(245, 158, 11, 0.12) 50%,
+        transparent 82%
       );
-    filter: blur(24px);
+    filter: blur(32px);
   }
 }
 @utility sunrise-subtle {
