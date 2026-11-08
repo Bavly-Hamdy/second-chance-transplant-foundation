@@ -66,4 +66,36 @@ describe("contact validation and detection", () => {
       expect(errs.phone?.[0]).toContain("صحيح");
     }
   });
+
+  it("supports French validation messages", () => {
+    const frSchema = getLeadSchema("fr");
+    const result = frSchema.safeParse({
+      name: "",
+      email: "not-an-email",
+      phone: "12",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const errs = result.error.flatten().fieldErrors;
+      expect(errs.name?.[0]).toContain("caractères");
+      expect(errs.email?.[0]).toContain("valide");
+      expect(errs.phone?.[0]).toContain("valide");
+    }
+  });
+
+  it("supports Spanish validation messages", () => {
+    const esSchema = getLeadSchema("es");
+    const result = esSchema.safeParse({
+      name: "",
+      email: "not-an-email",
+      phone: "12",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const errs = result.error.flatten().fieldErrors;
+      expect(errs.name?.[0]).toContain("caracteres");
+      expect(errs.email?.[0]).toContain("válido");
+      expect(errs.phone?.[0]).toContain("válido");
+    }
+  });
 });

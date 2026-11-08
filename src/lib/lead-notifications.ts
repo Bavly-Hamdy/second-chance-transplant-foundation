@@ -6,7 +6,7 @@ export const leadNotificationInputSchema = z.object({
   email: z.string().trim().email(),
   phone: z.string().trim().min(7),
   message: z.string().trim().max(1000).optional().default(""),
-  language: z.enum(["en", "ar"]).default("en"),
+  language: z.enum(["en", "ar", "fr", "es"]).default("en"),
 });
 
 export type LeadNotificationInput = {
@@ -14,7 +14,7 @@ export type LeadNotificationInput = {
   email: string;
   phone: string;
   message?: string | undefined;
-  language?: "en" | "ar" | undefined;
+  language?: "en" | "ar" | "fr" | "es" | undefined;
 };
 
 export interface NotificationResult {
@@ -178,7 +178,15 @@ export function generateLeadNotificationEmailHtml(input: LeadNotificationInput):
                     Website Language
                   </td>
                   <td style="padding:14px 18px;color:#1C1917;font-size:13px;font-weight:600;">
-                    ${input.language === "ar" ? "Arabic (RTL View)" : "English (LTR View)"}
+                    ${
+                      input.language === "ar"
+                        ? "Arabic (RTL View)"
+                        : input.language === "fr"
+                          ? "French (Français - LTR View)"
+                          : input.language === "es"
+                            ? "Spanish (Español - LTR View)"
+                            : "English (LTR View)"
+                    }
                   </td>
                 </tr>
                 <!-- Timestamps -->
@@ -336,7 +344,14 @@ export async function dispatchLeadNotification(
         "Email Address": input.email,
         "Phone Number": input.phone,
         "Message / Note": input.message || "None provided",
-        "Website Language": input.language === "ar" ? "Arabic" : "English",
+        "Website Language":
+          input.language === "ar"
+            ? "Arabic"
+            : input.language === "fr"
+              ? "French"
+              : input.language === "es"
+                ? "Spanish"
+                : "English",
         "Submission Time (Cairo)": new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" }),
       }),
     });

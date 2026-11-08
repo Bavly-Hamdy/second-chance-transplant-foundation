@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "rea
 import { supabase } from "@/integrations/supabase/client";
 import { getLeadSchema } from "@/lib/contact";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SUPPORTED_LANGUAGES } from "@/lib/i18n";
 import { notifyLeadServerFn } from "@/lib/lead-notifications";
 import {
   Globe,
@@ -118,9 +119,11 @@ function Index() {
 }
 
 function Header() {
-  const { language, toggleLanguage, t, isRtl } = useLanguage();
+  const { language, setLanguage, t, isRtl } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
   const ArrowIcon = isRtl ? ArrowLeft : ArrowRight;
 
   useEffect(() => {
@@ -131,6 +134,27 @@ function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setLangMenuOpen(false);
+      }
+    }
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setLangMenuOpen(false);
+      }
+    }
+    if (langMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [langMenuOpen]);
 
   return (
     <header
@@ -178,22 +202,69 @@ function Header() {
             </a>
           </nav>
 
-          {/* Language Switcher Button */}
-          <button
-            onClick={toggleLanguage}
-            aria-label={t.nav.ariaToggle}
-            className={`group flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 text-xs font-semibold text-[var(--navy)] shadow-2xs transition cursor-pointer min-h-[36px] ${
-              scrolled
-                ? "border-stone-300/80 bg-[var(--card)] hover:border-amber-400 hover:bg-stone-50"
-                : "border-amber-300/70 bg-white/75 backdrop-blur-xs hover:border-amber-400 hover:bg-white"
-            }`}
-          >
-            <Globe className="h-3.5 w-3.5 text-amber-600 transition-transform duration-300 group-hover:rotate-45" />
-            <span className="hidden xs:inline">{t.nav.langToggle}</span>
-            <span className="rounded bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold text-amber-900 uppercase">
-              {language === "en" ? "AR" : "EN"}
-            </span>
-          </button>
+          {/* Language Switcher Dropdown (Supports EN, AR, FR, ES) */}
+          <div className="relative" ref={langMenuRef}>
+            <button
+              onClick={() => setLangMenuOpen(!langMenuOpen)}
+              aria-label={t.nav.ariaToggle}
+              aria-expanded={langMenuOpen}
+              className={`group flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 text-xs font-semibold text-[var(--navy)] shadow-2xs transition cursor-pointer min-h-[36px] ${
+                scrolled || langMenuOpen
+                  ? "border-stone-300/80 bg-[var(--card)] hover:border-amber-400 hover:bg-stone-50"
+                  : "border-amber-300/70 bg-white/75 backdrop-blur-xs hover:border-amber-400 hover:bg-white"
+              }`}
+            >
+              <Globe className="h-3.5 w-3.5 text-amber-600 transition-transform duration-300 group-hover:rotate-45" />
+              <span className="font-bold text-[10px] sm:text-xs text-amber-900 uppercase">
+                {language.toUpperCase()}
+              </span>
+              <ChevronDown
+                className={`h-3 w-3 text-stone-500 transition-transform duration-200 ${
+                  langMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {/* Dropdown Menu */}
+            {langMenuOpen && (
+              <div
+                role="menu"
+                className={`absolute top-full mt-2 w-44 rounded-2xl border border-stone-200/90 bg-[var(--card)]/95 p-1.5 shadow-xl backdrop-blur-md animate-fade-up z-50 ${
+                  isRtl ? "left-0" : "right-0"
+                }`}
+              >
+                {SUPPORTED_LANGUAGES.map((item) => {
+                  const isActive = language === item.code;
+                  return (
+                    <button
+                      key={item.code}
+                      role="menuitem"
+                      onClick={() => {
+                        setLanguage(item.code);
+                        setLangMenuOpen(false);
+                      }}
+                      className={`flex items-center justify-between w-full px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
+                        isActive
+                          ? "bg-[var(--navy)] text-stone-50 shadow-xs"
+                          : "text-stone-700 hover:bg-stone-100 hover:text-[var(--navy)]"
+                      }`}
+                    >
+                      <span>{item.nativeName}</span>
+                      <span
+                        className={`text-[9px] font-bold uppercase rounded px-1.5 py-0.5 ${
+                          isActive
+                            ? "bg-amber-400/25 text-amber-200"
+                            : "bg-stone-100 text-stone-500"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
           {/* Primary Nav Button (Desktop) */}
           <a
@@ -233,6 +304,44 @@ function Header() {
             >
               {t.nav.connect}
             </a>
+
+            {/* Mobile Language Switcher (EN, AR, FR, ES) */}
+            <div className="pt-3 border-t border-stone-200">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-2 px-1">
+                {t.nav.langToggle}
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {SUPPORTED_LANGUAGES.map((item) => {
+                  const isActive = language === item.code;
+                  return (
+                    <button
+                      key={item.code}
+                      onClick={() => {
+                        setLanguage(item.code);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition cursor-pointer border ${
+                        isActive
+                          ? "border-[var(--navy)] bg-[var(--navy)] text-stone-50 shadow-xs"
+                          : "border-stone-200/80 bg-white/70 text-stone-700 hover:bg-white"
+                      }`}
+                    >
+                      <span>{item.nativeName}</span>
+                      <span
+                        className={`text-[9px] font-bold uppercase rounded px-1.5 py-0.5 ${
+                          isActive
+                            ? "bg-amber-400/25 text-amber-200"
+                            : "bg-stone-100 text-stone-500"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="pt-2 border-t border-stone-200">
               <a
                 href="#connect"

@@ -139,7 +139,7 @@ const structuredData = {
       publisher: {
         "@id": "https://secondchancetransplant.org/#organization",
       },
-      inLanguage: ["en", "ar"],
+      inLanguage: ["en", "ar", "fr", "es"],
     },
     {
       "@type": "WebPage",
@@ -154,7 +154,7 @@ const structuredData = {
       },
       description:
         "Whether waiting for an organ transplant or embracing life on the other side of healing, please know: you are never alone. Established in honor of a 10-year liver transplant milestone.",
-      inLanguage: ["en", "ar"],
+      inLanguage: ["en", "ar", "fr", "es"],
     },
   ],
 };
@@ -206,6 +206,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "ar_EG" },
+      { property: "og:locale:alternate", content: "fr_FR" },
+      { property: "og:locale:alternate", content: "es_ES" },
       { property: "og:image", content: "https://secondchancetransplant.org/Logo.png" },
       { property: "og:image:secure_url", content: "https://secondchancetransplant.org/Logo.png" },
       { property: "og:image:type", content: "image/png" },
@@ -247,6 +249,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "canonical", href: "https://secondchancetransplant.org/" },
       { rel: "alternate", hrefLang: "en", href: "https://secondchancetransplant.org/" },
       { rel: "alternate", hrefLang: "ar", href: "https://secondchancetransplant.org/?lang=ar" },
+      { rel: "alternate", hrefLang: "fr", href: "https://secondchancetransplant.org/?lang=fr" },
+      { rel: "alternate", hrefLang: "es", href: "https://secondchancetransplant.org/?lang=es" },
       { rel: "alternate", hrefLang: "x-default", href: "https://secondchancetransplant.org/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

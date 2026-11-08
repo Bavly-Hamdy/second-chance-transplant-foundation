@@ -20,14 +20,31 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setIsMounted(true);
     try {
+      // 1. Check URL search param first (e.g., ?lang=fr or ?lang=es)
+      if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get("lang")?.toLowerCase() as Language | null;
+        if (urlLang === "en" || urlLang === "ar" || urlLang === "fr" || urlLang === "es") {
+          setLanguageState(urlLang);
+          applyLanguageToDom(urlLang);
+          localStorage.setItem(STORAGE_KEY, urlLang);
+          return;
+        }
+      }
+
+      // 2. Check localStorage
       const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
-      if (saved === "en" || saved === "ar") {
+      if (saved === "en" || saved === "ar" || saved === "fr" || saved === "es") {
         setLanguageState(saved);
         applyLanguageToDom(saved);
       } else {
-        // Check navigator language
+        // 3. Fallback to navigator browser language
         const navLang = navigator.language?.toLowerCase() || "";
-        const initial = navLang.startsWith("ar") ? "ar" : "en";
+        let initial: Language = "en";
+        if (navLang.startsWith("ar")) initial = "ar";
+        else if (navLang.startsWith("fr")) initial = "fr";
+        else if (navLang.startsWith("es")) initial = "es";
+
         setLanguageState(initial);
         applyLanguageToDom(initial);
       }
@@ -59,7 +76,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   const toggleLanguage = () => {
-    setLanguage(language === "en" ? "ar" : "en");
+    const order: Language[] = ["en", "ar", "fr", "es"];
+    const nextIdx = (order.indexOf(language) + 1) % order.length;
+    setLanguage(order[nextIdx] || "en");
   };
 
   const isRtl = language === "ar";
