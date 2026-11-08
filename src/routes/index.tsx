@@ -254,10 +254,10 @@ function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-[92vh] flex flex-col justify-center items-center px-4 pt-24 xs:pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
-      {/* Free-Floating Official Logo with the Sun Atmosphere directly behind it */}
-      <div className="relative z-10 mx-auto mb-6 sm:mb-8 flex flex-col items-center justify-center">
-        {/* Soft, Serene Sun Glow Aura directly behind the logo */}
+    <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-4 pt-28 xs:pt-32 sm:pt-40 md:pt-44 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
+      {/* Free-Floating Official Logo with the Sun Atmosphere concentrated above the horizon */}
+      <div className="relative z-10 mx-auto mb-4 sm:mb-6 flex flex-col items-center justify-center">
+        {/* Soft, Serene Sun Glow Aura concentrated around the rising sun and dove */}
         <div aria-hidden className="hero-sun-behind-logo" />
 
         <img
@@ -266,12 +266,20 @@ function Hero() {
           className="animate-float relative z-10 w-56 xs:w-64 sm:w-80 md:w-[22rem] lg:w-[26rem] max-w-full h-auto object-contain drop-shadow-sm transition-transform duration-500 hover:scale-[1.02]"
           fetchPriority="high"
         />
+
+        {/* Slogan under the Logo (placed at the blue line from reference) */}
+        <p
+          className="animate-fade-up font-serif text-base xs:text-lg sm:text-xl md:text-2xl font-medium tracking-wide text-[var(--leaf)] mt-3 sm:mt-4"
+          style={{ animationDelay: "100ms" }}
+        >
+          {t.hero.slogan}
+        </p>
       </div>
 
       {/* Main Heading: Our Mission Begins Soon */}
       <h1
         className="animate-fade-up relative z-10 font-serif text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--navy)] max-w-4xl mx-auto leading-[1.15]"
-        style={{ animationDelay: "120ms" }}
+        style={{ animationDelay: "180ms" }}
       >
         {t.hero.title}
       </h1>
@@ -300,6 +308,13 @@ function FoundingChronicle() {
     >
       {/* Main Journal / Continuous Warm Human Letter — Flows smoothly directly on the cream page */}
       <article className="space-y-8 sm:space-y-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-stone-800 font-sans">
+        {/* Opening Epigraph Quote — Moved to the very top before paragraphs, styled in brand leaf green */}
+        <Reveal className="mb-10 sm:mb-14">
+          <blockquote className="border-l-2 rtl:border-l-0 rtl:border-r-2 border-amber-500/70 pl-6 sm:pl-8 rtl:pl-0 rtl:pr-6 rtl:pr-8 py-2 font-serif text-xl sm:text-2xl md:text-3xl font-medium italic text-[var(--leaf)] leading-relaxed sm:leading-snug">
+            {t.chronicle.quoteText}
+          </blockquote>
+        </Reveal>
+
         {/* Paragraph 1 - Uncertainty & Hope */}
         <Reveal>
           <p>{t.chronicle.p1}</p>
@@ -310,28 +325,24 @@ function FoundingChronicle() {
           <p>{t.chronicle.p2}</p>
         </Reveal>
 
-        {/* Central Creed Pull-Quote — Elegant, unboxed, and clean without signature */}
-        <Reveal className="my-10 sm:my-14">
-          <blockquote className="border-l-2 rtl:border-l-0 rtl:border-r-2 border-amber-500/70 pl-6 sm:pl-8 rtl:pl-0 rtl:pr-6 rtl:pr-8 py-2 font-serif text-xl sm:text-2xl md:text-3xl font-medium italic text-[var(--navy)] leading-relaxed sm:leading-snug">
-            {t.chronicle.quoteText}
-          </blockquote>
-        </Reveal>
-
         {/* Paragraph 3 - The Mission Beside You */}
         <Reveal>
           <p>{t.chronicle.p3}</p>
         </Reveal>
 
-        {/* Paragraph 4 - Laying the Groundwork & Digital Home */}
+        {/* Paragraph 4 - Updated Building & Foundation Groundwork */}
         <Reveal>
           <p>{t.chronicle.p4}</p>
         </Reveal>
 
-        {/* Warm, dignified sign-off */}
+        {/* Warm, dignified sign-off with Foundation Name and Slogan */}
         <Reveal>
           <div className="pt-6 sm:pt-8 text-[var(--navy)]">
             <p className="font-serif text-xl sm:text-2xl font-bold">
               {t.chronicle.signatureName}
+            </p>
+            <p className="text-xs sm:text-sm font-semibold tracking-wider text-[var(--leaf)] uppercase mt-1">
+              {t.hero.slogan}
             </p>
           </div>
         </Reveal>

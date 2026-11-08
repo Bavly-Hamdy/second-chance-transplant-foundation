@@ -114,10 +114,10 @@
   letter-spacing: -0.01em;
   color: var(--navy);
 }
-/* Sun Atmosphere placed directly behind the Logo */
+/* Sun Atmosphere concentrated around the Rising Sun above the emblem's horizon */
 .hero-sun-behind-logo {
   position: absolute;
-  top: 42%;
+  top: 18%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -128,45 +128,47 @@
 
 @media (max-width: 639px) {
   .hero-sun-behind-logo {
-    width: 330px;
-    height: 330px;
+    top: 17%;
+    width: 290px;
+    height: 190px;
     background:
       radial-gradient(
-        circle,
-        rgba(245, 158, 11, 0.32) 0%,
-        rgba(251, 191, 36, 0.20) 36%,
-        rgba(254, 240, 138, 0.08) 62%,
-        transparent 78%
+        ellipse 240px 140px at 50% 50%,
+        rgba(245, 158, 11, 0.36) 0%,
+        rgba(251, 191, 36, 0.22) 35%,
+        rgba(254, 240, 138, 0.08) 60%,
+        transparent 72%
       ),
       radial-gradient(
-        circle,
-        rgba(234, 160, 35, 0.28) 0%,
-        rgba(245, 158, 11, 0.12) 50%,
-        transparent 80%
+        ellipse 160px 100px at 50% 50%,
+        rgba(234, 160, 35, 0.30) 0%,
+        rgba(245, 158, 11, 0.12) 48%,
+        transparent 75%
       );
-    filter: blur(24px);
+    filter: blur(20px);
   }
 }
 
 @media (min-width: 640px) {
   .hero-sun-behind-logo {
-    width: 600px;
-    height: 560px;
+    top: 20%;
+    width: 500px;
+    height: 320px;
     background:
       radial-gradient(
-        ellipse 560px 500px at 50% 50%,
-        rgba(245, 158, 11, 0.28) 0%,
-        rgba(251, 191, 36, 0.18) 38%,
-        rgba(254, 243, 199, 0.07) 65%,
-        transparent 80%
+        ellipse 440px 250px at 50% 50%,
+        rgba(245, 158, 11, 0.32) 0%,
+        rgba(251, 191, 36, 0.19) 36%,
+        rgba(254, 243, 199, 0.07) 60%,
+        transparent 74%
       ),
       radial-gradient(
-        ellipse 380px 340px at 50% 50%,
-        rgba(234, 160, 35, 0.24) 0%,
-        rgba(245, 158, 11, 0.12) 50%,
-        transparent 82%
+        ellipse 280px 160px at 50% 50%,
+        rgba(234, 160, 35, 0.26) 0%,
+        rgba(245, 158, 11, 0.12) 48%,
+        transparent 76%
       );
-    filter: blur(32px);
+    filter: blur(28px);
   }
 }
 @utility sunrise-subtle {
