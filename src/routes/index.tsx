@@ -333,9 +333,6 @@ function FoundingChronicle() {
             <p className="font-serif text-xl sm:text-2xl font-bold">
               {t.chronicle.signatureName}
             </p>
-            <p className="text-xs sm:text-sm font-semibold text-stone-500 uppercase tracking-wider mt-1">
-              {t.chronicle.signatureRole}
-            </p>
           </div>
         </Reveal>
       </article>
