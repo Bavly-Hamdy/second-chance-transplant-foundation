@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://secondchancetransplant.org/</loc>
-    <lastmod>2026-11-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://secondchancetransplant.org/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://secondchancetransplant.org/?lang=ar" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://secondchancetransplant.org/" />
+    <image:image>
+      <image:loc>https://secondchancetransplant.org/Logo.png</image:loc>
+      <image:title>Second Chance Transplant Foundation Official Emblem</image:title>
+      <image:caption>Second Chance Transplant Foundation — dove, sunrise, and organ donation ribbon</image:caption>
+    </image:image>
   </url>
 </urlset>
-

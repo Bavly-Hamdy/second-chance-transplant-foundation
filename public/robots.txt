@@ -1,6 +1,29 @@
 # Robots.txt for Second Chance Transplant Foundation
+# https://secondchancetransplant.org
+
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Sitemaps
+# Specialized Search Engine Bot Rules
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /Logo.png
+Allow: /logo_main.png
+Allow: /favicon.png
+Allow: /icon-*.png
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot
+Allow: /
+Disallow: /api/
+
+# Sitemaps Declaration
 Sitemap: https://secondchancetransplant.org/sitemap.xml

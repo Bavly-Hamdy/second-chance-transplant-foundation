@@ -74,27 +74,89 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
-const organizationJsonLd = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "NGO",
-  name: "Second Chance Transplant Foundation",
-  alternateName: "مؤسسة الفرصة الثانية لزراعة الأعضاء",
-  url: "https://secondchancetransplant.org",
-  logo: "https://secondchancetransplant.org/Logo.png",
-  image: "https://secondchancetransplant.org/Logo.png",
-  description:
-    "An authentic humanitarian foundation standing beside organ transplant patients, living donors, and families from waiting, through healing, and for all the years ahead.",
-  foundingDate: "2016-05-21",
-  founder: {
-    "@type": "Person",
-    name: "Liver Transplant Recipient (May 21, 2016)",
-  },
-  creator: {
-    "@type": "Person",
-    name: "Bavly Hamdy",
-    url: "https://www.linkedin.com/in/bavly-hamdy",
-  },
-  sameAs: ["https://www.linkedin.com/in/bavly-hamdy"],
+  "@graph": [
+    {
+      "@type": "NGO",
+      "@id": "https://secondchancetransplant.org/#organization",
+      name: "Second Chance Transplant Foundation",
+      alternateName: [
+        "مؤسسة الفرصة الثانية لزراعة الأعضاء",
+        "Second Chance Foundation",
+        "SCTF",
+      ],
+      url: "https://secondchancetransplant.org",
+      logo: {
+        "@type": "ImageObject",
+        "@id": "https://secondchancetransplant.org/#logo",
+        url: "https://secondchancetransplant.org/Logo.png",
+        contentUrl: "https://secondchancetransplant.org/Logo.png",
+        caption: "Second Chance Transplant Foundation Official Crest",
+      },
+      image: "https://secondchancetransplant.org/Logo.png",
+      description:
+        "Humanitarian non-profit foundation standing beside organ transplant patients, living donors, and recipient families through every chapter of waiting, healing, and renewed life.",
+      foundingDate: "2016-05-21",
+      slogan: "A Second Chance • A New Life",
+      knowsAbout: [
+        "Organ Transplantation",
+        "Liver Transplantation",
+        "Kidney Transplantation",
+        "Heart Transplantation",
+        "Organ Donation Awareness",
+        "Patient Advocacy",
+        "Living Donors",
+        "Transplant Recovery",
+        "زراعة الأعضاء",
+        "زراعة الكبد",
+        "التبرع بالأعضاء",
+        "دعم مرضى الزراعة",
+      ],
+      founder: {
+        "@type": "Person",
+        name: "Liver Transplant Recipient (May 21, 2016)",
+        jobTitle: "Founder",
+      },
+      creator: {
+        "@type": "Person",
+        name: "Bavly Hamdy",
+        url: "https://www.linkedin.com/in/bavly-hamdy",
+      },
+      sameAs: [
+        "https://www.linkedin.com/in/bavly-hamdy",
+        "https://secondchancetransplant.org",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://secondchancetransplant.org/#website",
+      url: "https://secondchancetransplant.org",
+      name: "Second Chance Transplant Foundation",
+      alternateName: "مؤسسة الفرصة الثانية لزراعة الأعضاء",
+      description:
+        "Official platform and patient advocacy infrastructure standing beside organ transplant candidates, living donors, and families.",
+      publisher: {
+        "@id": "https://secondchancetransplant.org/#organization",
+      },
+      inLanguage: ["en", "ar"],
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://secondchancetransplant.org/#webpage",
+      url: "https://secondchancetransplant.org/",
+      name: "Second Chance Transplant Foundation — A Sacred Bridge Between Heartbreak and Hope",
+      isPartOf: {
+        "@id": "https://secondchancetransplant.org/#website",
+      },
+      about: {
+        "@id": "https://secondchancetransplant.org/#organization",
+      },
+      description:
+        "Whether waiting for an organ transplant or embracing life on the other side of healing, please know: you are never alone. Established in honor of a 10-year liver transplant milestone.",
+      inLanguage: ["en", "ar"],
+    },
+  ],
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -102,11 +164,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "Second Chance Transplant Foundation" },
+      { title: "Second Chance Transplant Foundation | A Second Chance, A New Life" },
       {
         name: "description",
         content:
-          "Supporting organ transplant patients, donors, and families from waiting, through healing, and for all the years ahead.",
+          "Dedicated humanitarian foundation standing beside organ transplant patients, living donors, and families through every chapter of waiting, healing, and renewed life. Founded in celebration of a life-saving liver transplant on May 21, 2016.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Second Chance Transplant Foundation, organ transplant, liver transplant, kidney transplant, heart transplant, organ donation awareness, living donor advocacy, transplant recovery, May 21 2016, patient sanctuary, مؤسسة الفرصة الثانية لزراعة الأعضاء, زراعة الأعضاء, زراعة الكبد, التبرع بالأعضاء, دعم مرضى الزراعة",
       },
       { name: "author", content: "Bavly Hamdy" },
       { name: "creator", content: "Bavly Hamdy" },
@@ -115,6 +182,58 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "robots",
         content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
       },
+      {
+        name: "googlebot",
+        content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+      },
+      {
+        name: "bingbot",
+        content: "index, follow, max-snippet:-1, max-image-preview:large",
+      },
+
+      /* Open Graph (Facebook, LinkedIn, Google Discover, WhatsApp) */
+      { property: "og:site_name", content: "Second Chance Transplant Foundation" },
+      {
+        property: "og:title",
+        content: "Second Chance Transplant Foundation | A Second Chance, A New Life",
+      },
+      {
+        property: "og:description",
+        content:
+          "A sacred bridge between heartbreak and hope, and a brand new sunrise. Standing beside transplant candidates, living donors, and families through every chapter of healing.",
+      },
+      { property: "og:url", content: "https://secondchancetransplant.org/" },
+      { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:locale:alternate", content: "ar_EG" },
+      { property: "og:image", content: "https://secondchancetransplant.org/Logo.png" },
+      { property: "og:image:secure_url", content: "https://secondchancetransplant.org/Logo.png" },
+      { property: "og:image:type", content: "image/png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content: "Official Emblem of Second Chance Transplant Foundation — Dove, Sunrise, and Organ Donation Ribbon",
+      },
+
+      /* Twitter Cards */
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Second Chance Transplant Foundation | A Second Chance, A New Life",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Standing beside organ transplant candidates, living donors, and recipient families through every chapter of hope and healing.",
+      },
+      { name: "twitter:image", content: "https://secondchancetransplant.org/Logo.png" },
+      {
+        name: "twitter:image:alt",
+        content: "Second Chance Transplant Foundation Emblem",
+      },
+
+      /* Brand & Mobile Configuration */
       { name: "theme-color", content: "#0D1B2A" },
       { name: "color-scheme", content: "light" },
       { name: "application-name", content: "Second Chance Transplant Foundation" },
@@ -125,6 +244,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "format-detection", content: "telephone=no" },
     ],
     links: [
+      { rel: "canonical", href: "https://secondchancetransplant.org/" },
+      { rel: "alternate", hrefLang: "en", href: "https://secondchancetransplant.org/" },
+      { rel: "alternate", hrefLang: "ar", href: "https://secondchancetransplant.org/?lang=ar" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://secondchancetransplant.org/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -135,7 +258,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "preload", as: "image", href: "/Logo.png" },
+      { rel: "preload", as: "image", href: "/Logo.png", fetchPriority: "high" },
       { rel: "icon", href: "/Logo.png", type: "image/png" },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/Logo.png" },
@@ -156,7 +279,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd),
+            __html: JSON.stringify(structuredData),
           }}
         />
       </head>
