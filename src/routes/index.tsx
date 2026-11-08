@@ -256,7 +256,7 @@ function Hero() {
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-center items-center px-4 pt-28 xs:pt-32 sm:pt-40 md:pt-44 pb-16 sm:pb-24 text-center sm:px-6 lg:px-8 overflow-hidden">
       {/* Free-Floating Official Logo with the Sun Atmosphere concentrated above the horizon */}
-      <div className="relative z-10 mx-auto mb-4 sm:mb-6 flex flex-col items-center justify-center">
+      <div className="relative z-10 mx-auto mb-6 sm:mb-8 md:mb-10 flex flex-col items-center justify-center">
         {/* Soft, Serene Sun Glow Aura concentrated around the rising sun and dove */}
         <div aria-hidden className="hero-sun-behind-logo" />
 
@@ -267,9 +267,9 @@ function Hero() {
           fetchPriority="high"
         />
 
-        {/* Slogan under the Logo (placed at the blue line from reference) */}
+        {/* Slogan under the Logo — Lifted directly beneath Transplant Foundation to match the red line */}
         <p
-          className="animate-fade-up font-serif text-base xs:text-lg sm:text-xl md:text-2xl font-medium tracking-wide text-[var(--leaf)] mt-3 sm:mt-4"
+          className="animate-fade-up font-serif text-base xs:text-lg sm:text-xl md:text-2xl font-medium tracking-wide text-[var(--leaf)] -mt-7 xs:-mt-8 sm:-mt-10 md:-mt-12 lg:-mt-14"
           style={{ animationDelay: "100ms" }}
         >
           {t.hero.slogan}
