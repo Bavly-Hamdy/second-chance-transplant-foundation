@@ -276,7 +276,7 @@ function Hero() {
         </p>
       </div>
 
-      {/* Main Heading: Our Mission Begins Soon */}
+      {/* Main Heading: Our Website Is Coming Soon */}
       <h1
         className="animate-fade-up relative z-10 font-serif text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--navy)] max-w-4xl mx-auto leading-[1.15]"
         style={{ animationDelay: "180ms" }}
@@ -308,9 +308,9 @@ function FoundingChronicle() {
     >
       {/* Main Journal / Continuous Warm Human Letter — Flows smoothly directly on the cream page */}
       <article className="space-y-8 sm:space-y-10 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose text-stone-800 font-sans">
-        {/* Opening Epigraph Quote — Moved to the very top before paragraphs, styled in brand leaf green */}
+        {/* Opening Epigraph Quote — Clean, unboxed typography in brand leaf green */}
         <Reveal className="mb-10 sm:mb-14">
-          <blockquote className="border-l-2 rtl:border-l-0 rtl:border-r-2 border-amber-500/70 pl-6 sm:pl-8 rtl:pl-0 rtl:pr-6 rtl:pr-8 py-2 font-serif text-xl sm:text-2xl md:text-3xl font-medium italic text-[var(--leaf)] leading-relaxed sm:leading-snug">
+          <blockquote className="py-2 font-serif text-xl sm:text-2xl md:text-3xl font-medium italic text-[var(--leaf)] leading-relaxed sm:leading-snug">
             {t.chronicle.quoteText}
           </blockquote>
         </Reveal>

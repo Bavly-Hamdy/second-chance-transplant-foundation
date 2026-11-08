@@ -105,7 +105,7 @@ export interface Translations {
 export const content: Record<Language, Translations> = {
   en: {
     meta: {
-      title: "Second Chance Transplant Foundation — Our Mission Begins Soon",
+      title: "Second Chance Transplant Foundation — Our Website Is Coming Soon",
       description:
         "There are moments in life when the world quiets down. Standing beside organ transplant patients, donors, and families through waiting, healing, and lifelong renewal.",
     },
@@ -122,7 +122,7 @@ export const content: Record<Language, Translations> = {
     },
     hero: {
       badge: "COMING SOON",
-      title: "Our Mission Begins Soon",
+      title: "Our Website Is Coming Soon",
       foundationName: "Second Chance Transplant Foundation",
       tagline: "Second Chance Transplant Foundation",
       slogan: "A Second Chance A New Life",
@@ -221,7 +221,7 @@ export const content: Record<Language, Translations> = {
   },
   ar: {
     meta: {
-      title: "مؤسسة الفرصة الثانية لزراعة الأعضاء — رسالتنا تبدأ قريباً",
+      title: "مؤسسة الفرصة الثانية لزراعة الأعضاء — موقعنا ينطلق قريباً",
       description:
         "هناك لحظات في الحياة يهدأ فيها العالم من حولك. نقف إلى جانب مرضى زراعة الأعضاء والمتبرعين الكرام وعائلاتهم في مسارات الانتظار والتعافي وبدايات الحياة المتجددة.",
     },
@@ -238,7 +238,7 @@ export const content: Record<Language, Translations> = {
     },
     hero: {
       badge: "قريباً",
-      title: "رسالتنا تبدأ قريباً",
+      title: "موقعنا ينطلق قريباً",
       foundationName: "مؤسسة الفرصة الثانية لزراعة الأعضاء",
       tagline: "مؤسسة الفرصة الثانية لزراعة الأعضاء",
       slogan: "فرصة ثانية.. حياة جديدة",
